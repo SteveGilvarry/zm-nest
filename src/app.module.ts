@@ -8,8 +8,8 @@ import { AwsModule } from './aws';
 import { BaseModule } from './base';
 import { CommonModule, ExceptionsFilter, LoggerMiddleware } from './common';
 import { configuration } from './config';
+import { ConfigurationModule } from './configuration';
 import { GqlModule } from './gql';
-import { SampleModule } from './sample';
 
 @Module({
   imports: [
@@ -37,7 +37,7 @@ import { SampleModule } from './sample';
     // Service Modules
     CommonModule, // Global
     BaseModule,
-    SampleModule,
+    ConfigurationModule,
     AwsModule,
     GqlModule,
     // Module Router
@@ -45,9 +45,6 @@ import { SampleModule } from './sample';
     RouterModule.register([{
       path: 'aws',
       module: AwsModule,
-    }, {
-      path: 'test',
-      module: SampleModule,
     }]),
   ],
   providers: [

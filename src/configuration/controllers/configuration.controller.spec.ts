@@ -4,11 +4,11 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 
 import { configuration } from '../../config';
 import { Sampletable1 } from '../../entity/sampledb1';
-import { CrudService } from '../providers';
-import { CrudController } from './crud.controller';
+import { ConfigurationService } from '../providers';
+import { ConfigurationController } from './configuration.controller';
 
 let moduleRef: TestingModule;
-let crud: CrudController;
+let crud: ConfigurationController;
 let idx: number;
 
 beforeAll(async () => {
@@ -31,11 +31,11 @@ beforeAll(async () => {
       }),
       TypeOrmModule.forFeature([Sampletable1]),
     ],
-    controllers: [CrudController],
-    providers: [CrudService],
+    controllers: [ConfigurationController],
+    providers: [ConfigurationService],
   }).compile();
 
-  crud = moduleRef.get(CrudController);
+  crud = moduleRef.get(ConfigurationController);
 });
 
 test('create', async () => {

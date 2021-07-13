@@ -3,11 +3,10 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import type { ConnectionOptions } from 'typeorm';
 
 import { configuration } from '../../config';
-import { Sampletable1 } from '../../entity/sampledb1';
-import { CrudService } from './crud.service';
+import { ConfigurationService } from './configuration.service';
 
 let moduleRef: TestingModule;
-let crud: CrudService;
+let crud: ConfigurationService;
 let idx: number;
 
 beforeAll(async () => {
@@ -19,10 +18,10 @@ beforeAll(async () => {
       }),
       TypeOrmModule.forFeature([Sampletable1]),
     ],
-    providers: [CrudService],
+    providers: [ConfigurationService],
   }).compile();
 
-  crud = moduleRef.get(CrudService);
+  crud = moduleRef.get(ConfigurationService);
 });
 
 test('create', async () => {
